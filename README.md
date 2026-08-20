@@ -1,5 +1,7 @@
 # 🧞 minions — 個人用ワンショット・コーディングエージェント環境
 
+日本語 | **[English](README.en.md)**
+
 [Stripe の Minions ブログ](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents)
 ([Part 2](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents-part-2)) を参考に、
 **goose** をコアにした個人開発向けの「無人・ワンショット」コーディングエージェント基盤です。
