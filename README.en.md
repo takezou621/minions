@@ -37,11 +37,16 @@ done ◀─ pr ◀─ ci(≤2 rounds) ◀─ push ◀─ commit ◀── tests 
   → Stripe's lesson: "Determinable, small decisions are best made deterministically in code" —
   saving tokens and CI while shrinking the space where the agent can go wrong.
 
-## Setup (already done on this machine)
+## Setup
+
+Prerequisites: [goose](https://github.com/block/goose) / git / python3 (3.9+). For automatic PR creation, [gh](https://cli.github.com/) is optional (`gh auth login` required).
 
 ```bash
-# Requirements: goose, git, gh (optional), python3 — check with `minion doctor`
-ln -sf ~/dev/minions/bin/minion ~/.local/bin/minion   # already on PATH
+git clone https://github.com/takezou621/minions.git
+mkdir -p ~/.local/bin
+ln -sf "$(pwd)/minions/bin/minion" ~/.local/bin/minion
+export PATH="$HOME/.local/bin:$PATH"   # add to ~/.zshrc etc. to make it permanent
+minion doctor   # verify dependencies and PATH
 ```
 
 ## Usage
@@ -114,7 +119,7 @@ goose configure   # add MCP servers (GitHub, Linear, Notion, ...)
 ## Repository layout
 
 ```
-~/dev/minions/
+repository root (wherever you cloned)/
 ├── bin/minion              # CLI entry
 ├── lib/minions/
 │   ├── core.py             # run state, config detection, git helpers

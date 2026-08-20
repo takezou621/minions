@@ -38,11 +38,16 @@ done ◀─ pr ◀─ ci(≤2周) ◀─ push ◀─ commit ◀── test通過
   → Stripe の教訓「決定できる小さな判断はコードで決定的に。トークンとCIを節約し、
   エージェントが間違う余地を減らす」
 
-## セットアップ (このPCでは完了済み)
+## セットアップ
+
+前提: [goose](https://github.com/block/goose) / git / python3 (3.9+)。PR自動作成には [gh](https://cli.github.com/) (要 `gh auth login`、任意)。
 
 ```bash
-# 依存: goose, git, gh(任意), python3 — `minion doctor` で確認
-ln -sf ~/dev/minions/bin/minion ~/.local/bin/minion   # PATH 通し済み
+git clone https://github.com/takezou621/minions.git
+mkdir -p ~/.local/bin
+ln -sf "$(pwd)/minions/bin/minion" ~/.local/bin/minion
+export PATH="$HOME/.local/bin:$PATH"   # 常用するなら ~/.zshrc などに追記
+minion doctor   # 依存とPATHを確認
 ```
 
 ## 使い方
@@ -114,7 +119,7 @@ goose configure   # MCPサーバ追加 (GitHub, Linear, Notion 等)
 ## ディレクトリ構成
 
 ```
-~/dev/minions/
+リポジトリルート (clone先)/
 ├── bin/minion              # CLIエントリ
 ├── lib/minions/
 │   ├── core.py             # run状態・設定検出・gitヘルパー
