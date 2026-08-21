@@ -288,6 +288,8 @@ def execute(run: Run, cfg: dict):
         run.event("done", "completed locally (no remote)")
         run.ok = True
         run.save()
+        _, patch = git(run.worktree, "diff", f"{cfg.get('pr_base')}...HEAD")
+        open(os.path.join(run.dir, "changes.patch"), "w").write(patch)
         return
     if err:
         return run.fail("push", err)

@@ -230,7 +230,7 @@ Expected use cases derived from the documented features.
 | **Receiving PRs** | PR body is the agent-written summary | `summary.md` → `gh pr create` body |
 | | Target different base branches | `pr_base` in `.minion.yaml` |
 | **Environment variations** | No `gh` / non-GitHub origin → push only, PR skipped | gh is optional |
-| | No origin remote → completes locally | state `done_local` |
+| | No origin remote → completes locally (writes `changes.patch` too) | event "completed locally (no remote)" |
 | **On failure** | Unrecoverable test/CI failure → run fails; inspect logs to find the cause | fix ≤2 / CI ≤2 rounds |
 | | Implement agent fails → inspect transcript, refine the task text, re-run | `minion log` |
 | **Config & rules** | Auto-detect lint/test commands per language | `minion init` (pyproject / package.json / Cargo.toml / go.mod / Makefile) |

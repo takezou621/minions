@@ -230,7 +230,7 @@ README 記載の機能から導かれる想定ユースケースの一覧。
 | **PR 受け取り** | agent 作成の要約を PR 本文として受け取る | `summary.md` → `gh pr create` 本文 |
 | | PR ベースブランチの出し分け | `.minion.yaml` の `pr_base` |
 | **環境バリエーション** | `gh` 未導入 / origin が GitHub 以外 → push まで自動、PR はスキップ | gh は任意 |
-| | origin なし → ローカル完結 | state `done_local` |
+| | origin なし → ローカル完結 (`changes.patch` も生成) | event「completed locally (no remote)」 |
 | **失敗時** | 修復不能な test/CI 失敗 → run 失敗終了、ログで人間が原因特定 | fix ≤2 回 / CI ≤2 周 |
 | | 実装 agent の失敗 → transcript を確認しタスク文を改善して再投下 | `minion log` |
 | **設定・ルール** | 言語別に lint/test を自動検出して雛形生成 | `minion init` (pyproject / package.json / Cargo.toml / go.mod / Makefile) |
